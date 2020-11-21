@@ -1,0 +1,1 @@
+asadmin deploy --force build\CoopPainEJB.jar

@@ -1,0 +1,25 @@
+version: '2'
+services:
+  db:
+    image: 'postgres:13-alpine'
+    environment:
+      - POSTGRES_USER=cooppain
+      - POSTGRES_PASSWORD=cooppain
+      - POSTGRES_DB=cooppain
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+  pgadmin:
+    image: 'dpage/pgadmin4:latest'
+    ports:
+      - '8082:80'
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=example@example.com
+      - PGADMIN_DEFAULT_PASSWORD=123456789
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
